@@ -195,9 +195,7 @@ class SearchBackend(BaseSearchBackend):
         
         index = self.site.get_index(model_klass)
         field_name = index.get_content_field()
-        params = {
-            'fl': '*,score',
-        }
+        params = kwargs.get('params', {'fl': '*,score'})
         
         if start_offset is not None:
             params['start'] = start_offset
